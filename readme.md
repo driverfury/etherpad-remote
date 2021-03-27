@@ -3,11 +3,11 @@ Etherpad remote is a small PHP web application based on [Slim Framework](https:/
 ## Installation
 To install this application you need to clone this github repository:
 ```bash
-git clone https://github.com/driverfury/collab-edit.git
+git clone https://github.com/driverfury/etherpad-remote.git
 ```
 Next you need to install all composer packages required:
 ```bash
-cd collab-edit
+cd etherpad-remote
 composer install
 ```
 Then you need to create a database and set database configurations inside the file `app/database.php`:

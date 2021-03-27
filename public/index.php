@@ -4,27 +4,23 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Slim\Factory\AppFactory;
 
-$app = new Slim\App();
-
-//$app->get('/asd', function($request, $response, $args) {
-//    $response->write('Welcome to Slim');
-//});
-//
-$app->get('/', function($request, $response, $args) {
-    $countries = [
-        ['name' => 'USA'],
-        ['name' => 'India'],
-        ['name' => 'Argentina'],
-        ['name' => 'Germany'],
-    ];
-    return $response->withJson($countries);
-});
+$config = [
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+];
+$app = new Slim\App($config);
 
 $app->get('/install', function($request, $response, $args) {
-    require_once('../app/install.php');
-    return $response->write('[OK] INSTALLATION');
+    $install = require_once('../app/install.php');
+    $res = $install();
+    if ($res === true) {
+        return $response->withStatus(200)->write('[OK] INSTALLATION');
+    } else {
+        return $response->withStatus(500)->write('[ERROR] MySQL: ' .  $res);
+    }
 });
 
-require_once('../app/api/fake.php');
+require_once('../app/api/v1.php');
 
 $app->run();

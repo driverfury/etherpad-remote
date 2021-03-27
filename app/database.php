@@ -6,4 +6,4 @@ $db_user = 'root';
 $db_password = '';
 $db_name = 'collab_edit';
 
-$db_conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+return mysqli_connect($db_host, $db_user, $db_password, $db_name);

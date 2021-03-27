@@ -1,9 +1,4 @@
 <?php
 
-$db_host = '127.0.0.1';
-$db_port = 3306;
-$db_user = 'root';
-$db_password = '';
-$db_name = 'collab_edit';
-
-return mysqli_connect($db_host, $db_user, $db_password, $db_name);
+$db_config = (require('config.php'))['database'];
+return mysqli_connect($db_config['host'], $db_config['user'], $db_config['password'], $db_config['name']);

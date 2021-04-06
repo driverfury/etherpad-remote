@@ -9,17 +9,17 @@ $app->post('/api/fake/start', function(Request $request, Response $response, arr
         ->withHeader('Access-Control-Allow-Origin', '*');
     return $response->withJson([
         'status' => 'success',
-        'pad_id' => 'test_pad',
+        'document_id' => 'test_pad',
         'url' => 'http://127.0.0.1:9001/p/test_pad',
     ]);
 });
 
-$app->post('/api/fake/save/{pad_id}', function(Request $request, Response $response, array $args) {
+$app->post('/api/fake/save/{document_id}', function(Request $request, Response $response, array $args) {
     $response = $response
         ->withHeader('Content-type', 'application/json')
         ->withHeader('Access-Control-Allow-Origin', '*');
     return $response->withJson([
-        'pad_id' => $args['pad_id'],
+        'document_id' => $args['document_id'],
         'status' => 'success',
         'message' => 'File saved',
     ]);
